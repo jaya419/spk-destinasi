@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Sistem Rekomendasi Wisata</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,36 +12,42 @@
 
     <style>
         :root {
-            --primary-color: #4361ee;
-            --primary-hover: #3a56d4;
-            --secondary-color: #4895ef;
-            --accent-color: #3f37c9;
-            --text-color: #2b2d42;
-            --light-text: #8d99ae;
-            --light-bg: #f8f9fa;
-            --success-color: #4cc9f0;
+            --primary-color: #3B82F6;
+            --primary-hover: #2563EB;
+            --secondary-color: #6366F1;
+            --accent-color: #8B5CF6;
+            --text-color: #1F2937;
+            --light-text: #6B7280;
+            --light-bg: #F9FAFB;
+            --success-color: #10B981;
+            --card-bg: rgba(255, 255, 255, 0.95);
         }
         
         body {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Poppins', sans-serif;
-            animation: gradientShift 12s ease infinite;
-            background-size: 200% 200%;
+            position: relative;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.6);
+            z-index: -1;
         }
         
         .login-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 450px;
             padding: 0 20px;
             animation: fadeIn 0.6s ease-out;
         }
@@ -52,55 +58,40 @@
         }
         
         .login-card {
-            background-color: white;
-            border-radius: 18px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            padding: 2.5rem 2.5rem 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        .login-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .login-card::before {
+        .login-card::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transition: height 0.3s ease;
-        }
-        
-        .login-card:hover::before {
-            height: 8px;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0)
+            );
+            transform: rotate(30deg);
+            pointer-events: none;
         }
         
         .login-logo {
             text-align: center;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .login-card:hover .login-logo {
-            transform: scale(1.02);
+            margin-bottom: 2rem;
         }
         
         .login-logo i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 0.75rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
+            margin-bottom: 1rem;
         }
         
         .login-logo h2 {
@@ -116,23 +107,18 @@
             color: var(--light-text);
             margin-bottom: 2rem;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-        
-        .login-card:hover .login-subtitle {
-            color: var(--text-color);
         }
         
         .form-floating > label {
             color: var(--light-text);
             font-weight: 400;
-            transition: all 0.3s ease;
         }
         
         .form-control {
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 1rem 1.25rem;
-            border: 1.5px solid #e2e8f0;
+            border: 1px solid #E5E7EB;
+            background: #F9FAFB;
             transition: all 0.3s ease;
             font-size: 0.95rem;
             height: calc(3.5rem + 2px);
@@ -140,34 +126,31 @@
         
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
-            transform: translateY(-1px);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+            background: white;
         }
         
         .form-control:focus + label {
             color: var(--primary-color);
-            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
         }
         
         .btn-login {
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             border: none;
-            border-radius: 10px;
-            padding: 0.9rem;
+            border-radius: 8px;
+            padding: 1rem;
             font-weight: 600;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             font-size: 1rem;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            background-size: 200% auto;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.2);
+            color: white;
+            margin-top: 1rem;
         }
         
         .btn-login:hover {
-            background-position: right center;
             transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
         }
         
         .register-link {
@@ -182,42 +165,17 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            position: relative;
         }
         
         .register-link a:hover {
             color: var(--accent-color);
-        }
-        
-        .register-link a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary-color);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-        
-        .register-link a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+            text-decoration: underline;
         }
         
         .alert {
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 1.5rem;
             border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            animation: fadeInDown 0.5s ease-out;
-        }
-        
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .password-toggle {
@@ -228,7 +186,6 @@
             cursor: pointer;
             color: var(--light-text);
             z-index: 5;
-            transition: color 0.2s;
             background: white;
             padding: 0 5px;
             border-radius: 50%;
@@ -238,7 +195,7 @@
             color: var(--primary-color);
         }
         
-        .floating-shapes {
+        .floating-elements {
             position: absolute;
             top: 0;
             left: 0;
@@ -248,38 +205,28 @@
             z-index: -1;
         }
         
-        .shape {
+        .floating-element {
             position: absolute;
-            opacity: 0.15;
-            border-radius: 50%;
+            opacity: 0.1;
             animation: float 15s infinite linear;
         }
         
-        .shape-1 {
+        .element-1 {
             width: 100px;
             height: 100px;
-            background: var(--primary-color);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233B82F6"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/></svg>') no-repeat;
             top: 10%;
             left: -30px;
             animation-delay: 0s;
         }
         
-        .shape-2 {
+        .element-2 {
             width: 150px;
             height: 150px;
-            background: var(--secondary-color);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238B5CF6"><path d="M12 2L4 12l8 10 8-10z"/></svg>') no-repeat;
             bottom: -50px;
             right: -50px;
             animation-delay: 3s;
-        }
-        
-        .shape-3 {
-            width: 70px;
-            height: 70px;
-            background: var(--accent-color);
-            top: 50%;
-            right: 20%;
-            animation-delay: 6s;
         }
         
         @keyframes float {
@@ -288,99 +235,53 @@
             100% { transform: translateY(0) rotate(360deg); }
         }
         
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 1.5rem 0;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background-color: #e2e8f0;
-            margin: 0 10px;
-        }
-        
-        .social-login {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #e2e8f0;
-            background: white;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-btn.google { color: #DB4437; }
-        .social-btn.facebook { color: #4267B2; }
-        .social-btn.twitter { color: #1DA1F2; }
-        
-        .forgot-password {
-            text-align: right;
-            margin-top: 0.5rem;
-        }
-        
-        .forgot-password a {
-            color: var(--light-text);
-            text-decoration: none;
+        .invalid-feedback {
+            color: #EF4444;
             font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-        
-        .forgot-password a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            margin-top: 0.25rem;
         }
         
         @media (max-width: 576px) {
             .login-card {
                 padding: 2rem 1.5rem;
-            }
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
+            margin: 0 15px;
+            width: calc(100% - 30px);
+            max-width: none;
+        }
             
             .login-logo h2 {
                 font-size: 1.5rem;
             }
             
             .btn-login {
-                padding: 0.8rem;
+                padding: 0.9rem;
+            }
+            
+            .login-logo i {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    <div class="floating-elements">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
     </div>
 
     <div class="login-container">
         <div class="login-card">
             <div class="login-logo">
-                <i class="bi bi-geo-alt-fill"></i>
-                <h2>Selamat Datang Kembali!</h2>
+                <i class="bi bi-award"></i>
+                <h2>Login Admin</h2>
             </div>
 
-            <p class="login-subtitle">Masuk untuk menemukan rekomendasi wisata terbaik</p>
+            <p class="login-subtitle">Login untuk masuk ke sistem</p>
 
             @if (session('status'))
                 <div class="alert alert-success alert-dismissible fade show">
@@ -445,7 +346,7 @@
         
         // Add animation to form elements when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            const formElements = document.querySelectorAll('.form-control, .btn-login, .social-btn');
+            const formElements = document.querySelectorAll('.form-control, .btn-login');
             formElements.forEach((el, index) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';

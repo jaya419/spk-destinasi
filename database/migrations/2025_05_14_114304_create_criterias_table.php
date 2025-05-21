@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('criterias', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->double('weight');
-            $table->enum('type', ['benefit', 'cost']); // benefit = semakin tinggi semakin baik
-            $table->timestamps();
-        });
+Schema::create('criterias', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->enum('type', ['benefit', 'cost']);
+    $table->float('weight');
+    $table->timestamps();
+});
+
     }
 
 

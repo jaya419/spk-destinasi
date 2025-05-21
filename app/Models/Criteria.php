@@ -7,8 +7,8 @@ class Criteria extends Model
 {
     protected $fillable = ['name', 'weight', 'type'];
 
-    public function scores()
-    {
-        return $this->hasMany(Recomendasi::class);
-    }
+public function scores() {
+    return $this->hasMany(Penilaian::class);
+}
+
 }

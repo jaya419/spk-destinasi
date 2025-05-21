@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Kriteria')
+@section('title', 'Tambah Kriteria')
 @section('content')
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header text-white" style="background-color: #34495e;">
                     <h5 class="mb-0">📝 Tambah Kriteria</h5>
                 </div>
                 <div class="card-body">
@@ -26,20 +26,20 @@
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Kriteria</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: Harga, Jarak, Fasilitas" required>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: Nilai Akademik" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="weight" class="form-label">Bobot (1 - 100)</label>
-                            <input type="number" name="weight" id="weight" class="form-control" placeholder="Contoh: 20" step="0.01" required>
+                            <label for="weight" class="form-label">Bobot (%)</label>
+                            <input type="number" name="weight" id="weight" class="form-control" placeholder="Contoh: 30" step="0.01" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="type" class="form-label">Tipe Kriteria</label>
                             <select name="type" id="type" class="form-select" required>
                                 <option value="">-- Pilih Tipe --</option>
-                                <option value="cost">Cost (Semakin rendah semakin baik)</option>
                                 <option value="benefit">Benefit (Semakin tinggi semakin baik)</option>
+                                <option value="cost">Cost (Semakin rendah semakin baik)</option>
                             </select>
                         </div>
 
